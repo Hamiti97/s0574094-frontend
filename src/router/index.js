@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Filme from '@/views/Filme'
+import Filmgenerator from '@/views/Filmgenerator'
+import Test from '@/views/Test'
 
 const routes = [
   {
@@ -18,6 +20,16 @@ const routes = [
     path: '/filme',
     name: 'Filme',
     component: Filme
+  },
+  {
+    path: '/filmgenerator',
+    name: 'Film Generator',
+    component: Filmgenerator
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: Test
   }
 ]
 

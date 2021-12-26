@@ -1,13 +1,13 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <button type="button" class="btn btn-primary">Primary</button>
+    <a href="/filmgenerator" class="btn btn-primary" role="button">Film vorschlagen</a>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Film Generator',
   props: {
     msg: String
   }
@@ -25,9 +25,9 @@ ul {
 }
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 100px;
 }
 a {
-  color: #42b983;
+  color: #000000;
 }
 </style>

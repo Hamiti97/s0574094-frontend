@@ -1,49 +1,44 @@
 <template>
-<h1>Filme</h1>
+  <h1>Alle Filme</h1>
   <div class="container-fluid">
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-      <div class="col" v-for="film in filme" :key="film.id">
-        <div class="card h-100">
-          <img :src="getFilmbild(film)" class ="card-img-top" :alt="film.titel">
-          <div class="card-body">
-            <h5 class="card-title">{{ film.titel }}</h5>
-            <p class="card-text">
-              Genre: {{ film.genre }}
-          </p>
-            <p class="card-text">
-              Erscheinungsjahr: {{ film.erscheinungsjahr }}
-            </p>
-          </div>
-      </div>
-    </div>
-    </div>
+    <film-card-list :filme="this.filme"></film-card-list>
   </div>
+  <film-create-form @created="addFilm"></film-create-form>
 </template>
 
 <script>
+import FilmCardList from '@/components/FilmCardList'
+import FilmCreateForm from '@/components/FilmCreateForm'
 export default {
-  name: 'Filme',
+  components: {
+    FilmCardList,
+    FilmCreateForm
+  },
   data () {
     return {
       filme: []
     }
   },
   methods: {
-    getFilmbild (film) {
-      if (film.titel === 'Godzilla') {
-        return require('../assets/godzilla1999.jpg')
-      } else if (film.titel === 'King Kong') {
-        return require('../assets/kingkong2005.jpg')
+    addFilm (filmLocation) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + filmLocation
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
       }
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(film => this.filme.push(film))
+        .catch(error => console.log('error', error))
     }
   },
   mounted () {
-    const requestOptions = {
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/filme'
+    const requestOption = {
       method: 'GET',
       redirect: 'follow'
     }
-
-    fetch('https://filmgenerator.herokuapp.com/api/v1/filme', requestOptions)
+    fetch(endpoint, requestOption)
       .then(response => response.json())
       .then(result => result.forEach(film => {
         this.filme.push(film)
