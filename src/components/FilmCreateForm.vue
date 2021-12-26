@@ -1,6 +1,6 @@
 <template>
   <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#film-create-offcanvas" aria-controls="#film-create-offcanvas">
-    <i class="bi bi-filme-plus-fill"></i>
+    <i class="bi bi-filme-plus-fill">Filme hinzufügen +</i>
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="film-create-offcanvas" aria-labelledby="offcanvas-label">
     <div class="offcanvas-header">
@@ -29,6 +29,13 @@
           Please provide the release
         </div>
       </div>
+      <div class="mb-3">
+        <label for="imageUrl" class="form-label">Image Url</label>
+        <input type="text" class="form-control" id="imageUrl" v-model="imageUrl" required>
+        <div class="invalid-feedback">
+          Please provide the imageUrl
+        </div>
+      </div>
       <div class="mt-5">
         <button class="btn btn-primary me-3" type="submit" @click="createFilm">Create</button>
         <button class="btn btn-danger" type="reset">Reset</button>
@@ -44,7 +51,8 @@ export default {
     return {
       titel: '',
       genre: '',
-      erscheinungsjahr: ''
+      erscheinungsjahr: '',
+      imageUrl: ''
     }
   },
   methods: {
@@ -55,7 +63,8 @@ export default {
       var raw = JSON.stringify({
         titel: this.titel,
         genre: this.genre,
-        erscheinungsjahr: this.erscheinungsjahr
+        erscheinungsjahr: this.erscheinungsjahr,
+        imageUrl: this.imageUrl
       })
 
       var requestOptions = {

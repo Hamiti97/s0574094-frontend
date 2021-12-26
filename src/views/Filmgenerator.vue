@@ -1,34 +1,57 @@
 <template>
-  <div id="app">
-    <h2>Random image in Vue.js:</h2>
-    <p v-if="selectedImage"><img style="width:20%" :src="selectedImage" alt=""></p>
-    <a href="/filmgenerator" class="btn btn-info" role="button">Neuer Vorschlag</a>
+  <h1>Ihr nächster Film</h1>
+  <div class="col" v-for="film in filme" :key="film.id">
+    <img :src="film.imageUrl" class ="card-img-top" :alt="film.titel">
+    <div class="card-body">
+      <h5 class="card-title">{{ film.titel }}</h5>
+      <p class="card-text">
+        Genre: {{ film.genre }}
+      </p>
+      <p class="card-text">
+        Erscheinungsjahr: {{ film.erscheinungsjahr }}
+      </p>
+    </div>
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AYaTCPbYGdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
+  <a href="/filmgenerator" class="btn btn-info" role="button">Neuer Vorschlag</a>
 </template>
 
 <script>
 export default {
-  el: '#app',
+  name: 'Filme',
   data () {
     return {
-      images: [
-        'https://m.media-amazon.com/images/M/MV5BNjFlOTI2OGQtMzg0YS00ZGE4LTkwMjEtZDUzYThlOTU5YjQ5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg',
-        'https://media1.jpc.de/image/w600/front/0/5050582412567.jpg'
-      ],
-      selectedImage: null
+      filme: []
     }
   },
-  methods: {
-    randomItem (items) {
-      return items[Math.floor(Math.random() * items.length)]
+  mounted () {
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
     }
-  },
-  created () {
-    this.selectedImage = this.randomItem(this.images)
+    const random = Math.floor(Math.random() * (15 - 11 + 1)) + 11
+    fetch('https://filmgenerator.herokuapp.com/api/v1/filme/' + random, requestOptions)
+      .then(response => response.json())
+      .then(result => this.filme.push(result))
+      .catch(error => console.log('error', error))
   }
 }
 </script>
 
 <style scoped>
-
+h1 { color: #000000;   }
+.card-img-top{
+  height: 600px;
+  width: auto;
+  border: 5px #ff0000 solid;
+  padding: 0;
+}
+.card-title{
+  color: black;
+}
+.card-text{
+  color: black;
+}
 </style>

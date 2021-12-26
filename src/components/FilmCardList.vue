@@ -4,7 +4,7 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
       <div class="col" v-for="film in filme" :key="film.id">
         <div class="card h-100">
-          <img :src="getFilmbild(film)" class ="card-img-top" :alt="film.titel">
+          <img :src="film.imageUrl" class ="card-img-top" :alt="film.titel">
           <div class="card-body">
             <h5 class="card-title">{{ film.titel }}</h5>
             <p class="card-text">
@@ -28,15 +28,6 @@ export default {
       filme: []
     }
   },
-  methods: {
-    getFilmbild (film) {
-      if (film.titel === 'Godzilla') {
-        return require('../assets/godzilla1999.jpg')
-      } else if (film.titel === 'King Kong') {
-        return require('../assets/kingkong2005.jpg')
-      }
-    }
-  },
   mounted () {
     const requestOptions = {
       method: 'GET',
@@ -54,5 +45,19 @@ export default {
 </script>
 
 <style scoped>
-
+.card-body{
+  background: #c95555;
+}
+.card-img-top{
+  height: 600px;
+  width: auto;
+  border: 5px #ff0000 solid;
+  padding: 0;
+}
+.card-title{
+  color: black;
+}
+.card-text{
+  color: black;
+}
 </style>
