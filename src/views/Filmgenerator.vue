@@ -20,7 +20,7 @@
 import FilmCard from '@/components/FilmCard'
 
 export default {
-  name: 'Filme',
+  name: 'Filmgenerator',
   components: {
     FilmCard
   },

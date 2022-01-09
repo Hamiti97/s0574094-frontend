@@ -9,7 +9,9 @@
   <br><br>
   <br><br>
   <br><br>
+  <div>
   <a href="/guide" class="btn btn-danger btn-lg" role="button">ZUM FILMFINDER GUIDE</a>
+  </div>
   <br><br>
   <br><br>
   <br><br>
