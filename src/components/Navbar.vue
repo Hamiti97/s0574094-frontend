@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Filmfinder</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,9 +9,8 @@
         <div class="navbar-nav">
           <router-link class="nav-link" to="/">Start</router-link>
           <router-link class="nav-link" to="/filmgenerator">Filmgenerator</router-link>
-          <router-link class="nav-link" to="/about">About</router-link>
           <router-link class="nav-link" to="/filme">Filme</router-link>
-          <router-link class="nav-link" to="/test">Test</router-link>
+          <router-link class="nav-link" to="/guide">Guide</router-link>
         </div>
       </div>
     </div>

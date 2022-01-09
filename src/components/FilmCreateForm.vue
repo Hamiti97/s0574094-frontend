@@ -1,6 +1,6 @@
 <template>
   <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#film-create-offcanvas" aria-controls="#film-create-offcanvas">
-    <i class="bi bi-filme-plus-fill">Filme hinzufügen +</i>
+    <i class="bi bi-filme-plus-fill">Filme hinzufügen ➕</i>
   </button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="film-create-offcanvas" aria-labelledby="offcanvas-label">
     <div class="offcanvas-header">
@@ -36,6 +36,13 @@
           Please provide the imageUrl
         </div>
       </div>
+      <div class="mb-3">
+        <label for="ytLink" class="form-label">ytLink</label>
+        <input type="text" class="form-control" id="ytLink" v-model="ytLink" required>
+        <div class="invalid-feedback">
+          Please provide the ytLink
+        </div>
+      </div>
       <div class="mt-5">
         <button class="btn btn-primary me-3" type="submit" @click="createFilm">Create</button>
         <button class="btn btn-danger" type="reset">Reset</button>
@@ -52,7 +59,8 @@ export default {
       titel: '',
       genre: '',
       erscheinungsjahr: '',
-      imageUrl: ''
+      imageUrl: '',
+      ytLink: ''
     }
   },
   methods: {
@@ -64,7 +72,8 @@ export default {
         titel: this.titel,
         genre: this.genre,
         erscheinungsjahr: this.erscheinungsjahr,
-        imageUrl: this.imageUrl
+        imageUrl: this.imageUrl,
+        ytLink: this.ytLink
       })
 
       var requestOptions = {
@@ -83,6 +92,7 @@ export default {
 
 <style scoped>
 .sticky-button {
+  background-color: #212529;
   position: fixed;
   bottom: 20px;
   right: 20px;

@@ -1,15 +1,19 @@
 <template>
+  <body>
   <h1>Alle Filme</h1>
   <div class="container-fluid">
     <film-card-list :filme="this.filme"></film-card-list>
   </div>
   <film-create-form @created="addFilm"></film-create-form>
+  </body>
 </template>
 
 <script>
 import FilmCardList from '@/components/FilmCardList'
 import FilmCreateForm from '@/components/FilmCreateForm'
+
 export default {
+  name: 'Filme',
   components: {
     FilmCardList,
     FilmCreateForm
@@ -49,5 +53,11 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  background-color: #212529;
+  color: #eee9e9;
+}
+body {background-color: #181a1a
+}
 
 </style>

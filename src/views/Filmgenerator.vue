@@ -1,26 +1,35 @@
 <template>
+  <body>
   <h1>Ihr nächster Film</h1>
   <div class="col" v-for="film in filme" :key="film.id">
-    <img :src="film.imageUrl" class ="card-img-top" :alt="film.titel">
-    <div class="card-body">
-      <h5 class="card-title">{{ film.titel }}</h5>
-      <p class="card-text">
-        Genre: {{ film.genre }}
-      </p>
-      <p class="card-text">
-        Erscheinungsjahr: {{ film.erscheinungsjahr }}
-      </p>
+    <div class="btn-group">
+      <a class="btn  btn-default btn-lg btn-general btn-white smooth-scroll"
+         :href="film.ytLink" target="_blank">
+        Zum Trailer
+      </a>
+      <a href="/filmgenerator" class="btn btn-danger btn-lg" role="button">NEUER VORSCHLAG</a>
     </div>
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/AYaTCPbYGdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <br><br>
+    <film-card :film="film"></film-card>
+    <br><br>
   </div>
-  <a href="/filmgenerator" class="btn btn-info" role="button">Neuer Vorschlag</a>
+  </body>
 </template>
 
 <script>
+import FilmCard from '@/components/FilmCard'
+
 export default {
   name: 'Filme',
+  components: {
+    FilmCard
+  },
+  props: {
+    film: {
+      type: Array,
+      required: true
+    }
+  },
   data () {
     return {
       filme: []
@@ -41,17 +50,25 @@ export default {
 </script>
 
 <style scoped>
-h1 { color: #000000;   }
-.card-img-top{
-  height: 600px;
-  width: auto;
-  border: 5px #ff0000 solid;
-  padding: 0;
+body { background-image: url("../assets/frontend-filme.png"); }
+h1 {color: #ffffff;
+  background-color: #212529;
 }
-.card-title{
-  color: black;
+a {
+  color: #eee9e9;
+  font-size: 25px;
+  display: inline;
+  background-color: #212529;
+  border: 3px #eee9e9 solid;
 }
-.card-text{
-  color: black;
+a2{
+  color: #eee9e9;
+  font-size: 20px;
+  display: inline;
+  background-color: #212529;
+  border: 3px #eee9e9 solid;
+}
+film-card{
+  size: 20px;
 }
 </style>

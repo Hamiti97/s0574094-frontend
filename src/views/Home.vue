@@ -1,13 +1,31 @@
 <template>
+  <body>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Film Generator"/>
+    <HelloWorld msg="Film Finder"/>
   </div>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <a href="/guide" class="btn btn-danger btn-lg" role="button">ZUM FILMFINDER GUIDE</a>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  </body>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/HomeMessage.vue'
 
 export default {
   name: 'Home',
@@ -16,3 +34,22 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+h1 {
+  color: #eee9e9;
+  font-size: 3em;
+  display: inline;
+  background-color: #212529;
+  border: 3px #eee9e9 solid;
+}
+body { background-image: url("../assets/frontend-filme.png"); }
+a {
+  background-color: #212529;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border: 3px #eee9e9 solid;
+}
+</style>
