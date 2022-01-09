@@ -24,8 +24,7 @@
 </script>
 
 <style scoped>
-body {background-color: #181a1a
-       }
+body { background-image: url("../assets/NvN.gif"); }
 h1 {color: #ffffff;
   background-color: #212529;
 }
